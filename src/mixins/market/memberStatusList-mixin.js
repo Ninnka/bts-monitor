@@ -1,0 +1,169 @@
+export default {
+  data(){
+    return{
+      memberStatusList:[
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.5
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.1
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.8
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.9
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.2
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        },
+        {
+          id:'1',
+          name:'zhou',
+          superior:'amdin',
+          balance:100000,
+          balanceChange:3000,
+          OccupyBond:2000,
+          freeBond:4000,
+          ratio:0.3
+        }
+      ],
+      memberStatusListIndex:{
+        start:0,
+        end:9,
+      },
+    }
+  },
+  created:function () {
+    this.memberStatusList = this.sort(this.memberStatusList,'ratio')
+    this.memberStatusList.forEach((item)=>{
+      if(item.ratio>0.5){
+        item.exception = 'success'
+      }else if(item.ratio<0.2){
+        item.exception = 'exception'
+      }else{
+        item.exception = ''
+      }
+    })
+  },
+  methods:{
+    filterMemberStatusShowList(list,start,end,status){
+      let showList = this.filterShowList(list,start,end)
+      if(status==='left'){
+        return showList.filter((item,index)=>{
+          if(index<5){
+            return item
+          }
+        })
+      }else if(status==='right'){
+        return showList.filter((item,index)=>{
+          if(index<10&&index>=5){
+            return item
+          }
+        })
+      }
+    },
+    filterMemberStatusKeyList(status){
+      return this.memberStatusList.filter((item)=>{
+        if(item.exception === status){
+          return item
+        }
+      })
+    },
+  }
+}
