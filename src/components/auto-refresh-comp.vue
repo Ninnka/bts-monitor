@@ -32,7 +32,7 @@ export default {
 <style lang="less">
   .top-switch{
     position: absolute;
-    right: 40px;
+    right: 8px;
     top: 8px;
     span{
       display: inline-block;

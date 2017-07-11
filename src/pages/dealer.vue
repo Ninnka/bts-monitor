@@ -1,6 +1,6 @@
 <template>
     <div class="page-container textalign-left">
-      <div>
+      <div class="posi-rel">
         <div class="il-block self-gutter">
           <el-select v-model="dealerSelected" filterable placeholder="请选择交易商" :loading="dealerLoading">
             <el-option v-for="dealer in dealerOptions" :key="dealer.id" :label="dealer.name" :value="dealer"></el-option>
@@ -251,6 +251,8 @@ export default {
   padding: 20px 10px 20px 30px;
   background: #eceef3;
   overflow-y: auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .il-block {
   display: inline-block;
@@ -272,11 +274,16 @@ export default {
 }
 .muti-row {
   width: 100%;
-  min-height: 100%;
   justify-content: space-between;
+  padding-right: 30px;
+  max-height: calc(~"100% - 56px");
+  overflow-x: auto;
+  overflow-y: auto;
+  box-sizing: content-box;
 }
 .dealer-monitor-item {
   max-width: 49%;
+  min-width: 49%;
   height: 280px;
   flex-grow: 1;
   flex-shrink: 1;

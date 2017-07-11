@@ -424,6 +424,10 @@ export default {
   position: absolute;
 }
 
+.posi-rel {
+  position: relative;
+}
+
 .inner-gutter-normal {
   box-sizing: border-box;
   padding: 12px 15px 18px 17px;

@@ -1,14 +1,16 @@
 <template>
   <div class="page-container textalign-left">
-    <div class="il-block self-gutter">
-      <el-date-picker
-        v-model="searchTimeRange"
-        type="datetimerange"
-        placeholder="选择时间范围">
-      </el-date-picker>
-      <el-button type="primary" @click="emitSearch" class="cus-btnsize cus-gutter">查询</el-button>
+    <div class="posi-rel">
+      <div class="il-block self-gutter">
+        <el-date-picker
+          v-model="searchTimeRange"
+          type="datetimerange"
+          placeholder="选择时间范围">
+        </el-date-picker>
+        <el-button type="primary" @click="emitSearch" class="cus-btnsize cus-gutter">查询</el-button>
+      </div>
+      <auto-refresh-comp :refreshStatus="pageSwitchStatus" @switchStatusChange="switchStatusChange"></auto-refresh-comp>
     </div>
-    <auto-refresh-comp :refreshStatus="pageSwitchStatus" @switchStatusChange="switchStatusChange"></auto-refresh-comp>
     <el-tabs v-model="currentTab" type="card" editable @edit="handleTabsEdit" @tab-remove="handleTabRemove" @tab-add="handleTabAdd" @tab-click="handleTabClick">
       <el-tab-pane
         :key="item.name"
