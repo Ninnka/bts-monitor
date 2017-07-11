@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -67,7 +66,7 @@ export default {
 
 <style lang="less">
 .chart-wrap {
-  width: 460px;
+  width: 100%;
   height: 280px;
 }
 .echarts {

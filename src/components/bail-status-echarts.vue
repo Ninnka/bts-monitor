@@ -2,7 +2,7 @@
   <div class="chart-wrap">
     <chart :options="bailStatusOptions" ref="chart"></chart>
   </div>
-
+  
 </template>
 
 <script>
@@ -84,7 +84,7 @@ export default {
 
 <style lang="less" scoped>
 .chart-wrap {
-  width: 819px;
+  width: 100%;
   height: 294px;
 }
 .echarts {

@@ -96,7 +96,7 @@ export default {
 
 <style lang="less" scoped>
 .chart-wrap {
-  width: 820px;
+  width: 100%;
   height: 340px;
 }
 .echarts {

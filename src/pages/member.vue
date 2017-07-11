@@ -17,7 +17,7 @@
         :name="item.name"
       >
         <keep-alive>
-          <tab-content ref="tabContent"></tab-content>
+          <tab-content ref="tabContent"></tab-content>  
         </keep-alive>
       </el-tab-pane>
     </el-tabs>
@@ -29,6 +29,7 @@ import autoRefreshComp from '@comps/auto-refresh-comp';
 import tabContent from '@pages/member-tabs/tab-content';
 
 export default {
+  firstRender: true,
   name: 'member',
   components: {
     autoRefreshComp,
@@ -94,6 +95,14 @@ export default {
         clickTabRefs.positionsDetailEcharts.$refs.positionStructureEcharts.$refs.chart.resize();
         if (!!once) this.$refs.tabContent[index].setLoaded();
       });
+    },
+    useChartResize () {
+      for (let i = 0; i < this.memberTabList.length; i++) {
+        this.$refs.tabContent[i].resetLoaded();
+        if (this.currentTab === this.memberTabList[i].name) {
+          this.chartResizeAction(i);
+        }
+      }
     }
   },
   // watch: {
@@ -106,14 +115,17 @@ export default {
   },
   mounted () {
     console.log('member mounted');
-    window.addEventListener('resize', () => {
-      for (let i = 0; i < this.memberTabList.length; i++) {
-        this.$refs.tabContent[i].resetLoaded();
-        if (this.currentTab === this.memberTabList[i].name) {
-          this.chartResizeAction(i);
-        }
-      }
-    });
+  },
+  activated () {
+    window.addEventListener('resize', this.useChartResize);
+    if (!this.firstRender) {
+      this.useChartResize(); 
+    }else {
+      this.firstRender = false;
+    }
+  },
+  deactivated () {
+    window.removeEventListener('resize', this.useChartResize);
   }
 }
 </script>
@@ -131,7 +143,6 @@ export default {
   background: #eceef3;
   box-sizing: border-box;
 }
-
 .il-block {
   display: inline-block;
 }

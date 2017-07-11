@@ -1,6 +1,6 @@
 <template>
-  <div class="content-item-wrap" :class="cusStyle">
-    <div class="item-title-wrap" v-if="showTitle">
+  <div class="content-item-wrap il-block" :class="cusStyle">
+    <div class="il-block item-title-wrap" v-if="showTitle">
       <div class="item-title" :class="[showTitleIndicator ? 'item-title-indicator' : '']">{{ getItemTitle }}
         <span v-if="itemDetail.itemSubTitle != undefined">
           <span v-for="subTitle of itemDetail.itemSubTitle" :key="subTitle"> {{ getSubTitle(subTitle) }} </span>
@@ -82,7 +82,6 @@ export default {
   overflow: hidden;
   position: relative;
   .item-title-wrap {
-    text-align: left;
     margin-top: 8px;
   }
   .item-title {

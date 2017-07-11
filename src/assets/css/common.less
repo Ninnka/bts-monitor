@@ -58,9 +58,17 @@ img{
   border-right:1px solid #d3dce6 !important;
   border-bottom: 1px solid #fff;
 }
-.el-tabs__content{
-  height: 700px !important;
-  overflow-y: auto !important;
+// .el-tabs__content{
+//   height: 700px !important;
+//   overflow-y: auto !important;
+// }
+.el-tabs--card {
+  height: calc(~"100% - 56px");
+}
+.el-tabs__content {
+  height: calc(~"100% - 57px");
+  overflow-y: scroll !important;
+  overflow-x: auto !important;
 }
 .el-table th {
   text-align: center !important;
@@ -71,35 +79,49 @@ img{
 }
 //暂时
 .detailOverview {
-  width: 580px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 30%;
   max-height: 150px;
-  overflow: hidden;
+  overflow: hidden;  
 }
 
 .preWarning {
-  width: 580px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 30%;
   max-height: 150px;
   overflow: hidden;
 }
 
 .bailStatus {
-  width: auto !important;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 69.5%;
 }
 
 .companyStatus {
-  width: auto !important;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 28.8%;
 }
 
 .memberStructure {
-  width: auto !important;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 28.8%;
 }
 
 .orderStatus {
-  width: auto !important;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 69.5%;
 }
 
 .positionsDetail {
-  width: auto !important;
+  flex-grow: 1;
+  flex-shrink: 1;
+  
 }
 
 .position-detail-item-wrap {
@@ -107,39 +129,50 @@ img{
   justify-content: space-between;
   > div {
     height: 280px;
+    margin: 0 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 }
 
 .positionStatus {
-  width: 400px;
+  width: 31%;
 }
 
 .positionStructure {
-  width: 336px;
+  width: 26.47%;
 }
 
 .positionProportion {
-  width: 377px;
+  width: 29.94%;
 }
 
 .organizationOperaStatus {
-  width: 709px;
+  width: 60.08%;
   height: 280px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .profitTrend {
-  width: 460px;
+  width: 38.98%;
   height: 280px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .activeDealer {
-  width: 580px;
+  width: 49%;
   height: 280px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .suspiciousDealer {
-  width: 580px;
+  width: 49%;
   height: 280px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 //自定义公共颜色
 .green{

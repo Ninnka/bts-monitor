@@ -1,12 +1,14 @@
 <template>
   <div class="inner-gutter-normal">
-    <el-table ref="activeDealerTable" :data="tableData" border style="width: 100%;" height="240" :default-sort = "{prop: 'dealer', order: 'ascending'}" @header-click="suspiciousDealerTableHeaderClick">
+    <el-table ref="activeDealerTable" :data="tableData" border style="width: 100% " max-height="221" :default-sort = "{prop: 'dealer', order: 'ascending'}" @header-click="suspiciousDealerTableHeaderClick">
       <el-table-column prop="dealer" label="交易商">
         <template scope="scope">
-          <div class="tabledata-dealer">
-            <p class="hightlight">{{scope.row.organizetionName}}</p>
-            <p>20天前开通</p>
-          </div>
+          <el-tooltip class="item" effect="dark" :content="getFormatTime(scope.row.createdTime)" placement="bottom">
+            <div class="tabledata-dealer">
+              <p class="hightlight">{{scope.row.organizetionName}}</p>
+              <p>{{ getTimeDifference(scope.row.createdTime) }}天前开通</p>
+            </div>
+          </el-tooltip>
         </template>
       </el-table-column>
       <el-table-column prop="recharge" label="充值" width="120" :render-header="renderHeader">
@@ -45,7 +47,10 @@
 </template>
 
 <script>
+import timeFormatMixins from '@mixins/time-format-mixins';
+
 export default {
+  mixins: [timeFormatMixins],
   props: {
     suspiciousDealerTableData: {
       default: () => {
@@ -119,11 +124,17 @@ export default {
                 this.sortDescending(this.currentTableHeaderClick, command);
                 this.sortStatus[this.currentTableHeaderClick][command] = 'descending';
               }
+            },
+            'visible-change': (isVisible) => {
+              this.isVisible = isVisible;
             }
           },
           attrs: {
             trigger: 'click'
-          }
+          },
+          props: {
+            isVisible: false
+          },
         },
         [
           createElement('span',
@@ -133,7 +144,8 @@ export default {
             {
               class: {
                 'el-icon-arrow-down': true,
-                'el-icon--right': true
+                'el-icon--right': true,
+                'el-icon-arrow-up': false
               }
             })
           ], {
@@ -143,14 +155,14 @@ export default {
           }),
           createElement('el-dropdown-menu',
             {
-              slot: 'dropdown',
+              slot: 'dropdown'
             },
             [
               createElement('el-dropdown-item', {
                 attrs: {
                   command: 'frequency'
                 }
-              }, ['次数',
+              }, ['次数', 
                 createElement('i', {
                   class: {
                     'el-icon-d-caret': true,
@@ -162,7 +174,7 @@ export default {
                 attrs: {
                   command: 'total'
                 }
-              }, ['总额',
+              }, ['总额', 
                 createElement('i', {
                   class: {
                     'el-icon-d-caret': true,
@@ -197,8 +209,8 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-  .el-table th {
-    text-align: center !important;
-  }
+<style lang="less">
+.el-table th {
+  text-align: center !important;
+}
 </style>

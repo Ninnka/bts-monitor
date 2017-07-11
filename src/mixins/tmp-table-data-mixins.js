@@ -11,7 +11,8 @@ export default {
           dealer: '8',
           dealerCompare: '3',
           profit: '1000.00',
-          profitCompare: '2'
+          profitCompare: '2',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou2',
@@ -22,7 +23,8 @@ export default {
           dealer: '9',
           dealerCompare: '3',
           profit: '2000.00',
-          profitCompare: '2'
+          profitCompare: '2',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou3',
@@ -33,7 +35,8 @@ export default {
           dealer: '3',
           dealerCompare: '3',
           profit: '5000.00',
-          profitCompare: '2'
+          profitCompare: '2',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou4',
@@ -44,7 +47,8 @@ export default {
           dealer: '1',
           dealerCompare: '3',
           profit: '3000.00',
-          profitCompare: '2'
+          profitCompare: '2',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou5',
@@ -55,7 +59,8 @@ export default {
           dealer: '2',
           dealerCompare: '3',
           profit: '2500.00',
-          profitCompare: '2'
+          profitCompare: '2',
+          createdTime: 1499325898
         }
       ],
       suspiciousDealerTableData: [
@@ -66,7 +71,8 @@ export default {
           profitFrequency: '3',
           profitMount: '2',
           withDrawalFrequency: '4',
-          withDrawalMount: '3'
+          withDrawalMount: '3',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou2',
@@ -75,7 +81,8 @@ export default {
           profitFrequency: '4',
           profitMount: '1',
           withDrawalFrequency: '2',
-          withDrawalMount: '5'
+          withDrawalMount: '5',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou3',
@@ -84,7 +91,8 @@ export default {
           profitFrequency: '5',
           profitMount: '3',
           withDrawalFrequency: '1',
-          withDrawalMount: '4'
+          withDrawalMount: '4',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou4',
@@ -93,7 +101,8 @@ export default {
           profitFrequency: '7',
           profitMount: '4',
           withDrawalFrequency: '5',
-          withDrawalMount: '1'
+          withDrawalMount: '1',
+          createdTime: 1499325898
         },
         {
           organizetionName: 'jigou5',
@@ -102,7 +111,8 @@ export default {
           profitFrequency: '5',
           profitMount: '2',
           withDrawalFrequency: '2',
-          withDrawalMount: '3'
+          withDrawalMount: '3',
+          createdTime: 1499325898
         }
       ]
     }
