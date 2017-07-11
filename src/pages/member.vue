@@ -31,7 +31,6 @@ import autoRefreshComp from '@comps/auto-refresh-comp';
 import tabContent from '@pages/member-tabs/tab-content';
 
 export default {
-  firstRender: true,
   name: 'member',
   components: {
     autoRefreshComp,
@@ -39,6 +38,8 @@ export default {
   },
   data () {
     return {
+      tabIsActived: false,
+      firstRender: true,
       msg: 'member',
       currentTab: '1',
       memberTabList: [{
@@ -59,9 +60,9 @@ export default {
         if (tabRemovedName === this.memberTabList[i].name) {
           if (i > 0) {
             this.currentTab = this.memberTabList[i - 1].name;
+            this.chartResizeAction(i - 1, true);
           }
           this.memberTabList.splice(i, 1);
-          this.chartResizeAction(i - 1, true);
           break;
         }
       }
@@ -99,6 +100,9 @@ export default {
       });
     },
     useChartResize () {
+      if (!this.tabIsActived) {
+        return;
+      }
       for (let i = 0; i < this.memberTabList.length; i++) {
         this.$refs.tabContent[i].resetLoaded();
         if (this.currentTab === this.memberTabList[i].name) {
@@ -116,10 +120,11 @@ export default {
     console.log('member created');
   },
   mounted () {
+    window.addEventListener('resize', this.useChartResize);
     console.log('member mounted');
   },
   activated () {
-    window.addEventListener('resize', this.useChartResize);
+    this.tabIsActived = true;
     if (!this.firstRender) {
       this.useChartResize(); 
     }else {
@@ -127,7 +132,7 @@ export default {
     }
   },
   deactivated () {
-    window.removeEventListener('resize', this.useChartResize);
+    this.tabIsActived = false;
   }
 }
 </script>

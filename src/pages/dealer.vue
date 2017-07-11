@@ -56,7 +56,6 @@ import { dealerMonitorOptions, seriesOption, getRandom } from '@mixins/tmp-deale
 import { cloneDeep } from 'lodash';
 
 export default {
-  firstRender: true,
   name: 'dealer',
   components: {
     autoRefreshComp,
@@ -73,6 +72,8 @@ export default {
     }
 
     return {
+      tabIsActived: false,
+      firstRender: true,
       msg: 'dealer',
       pageSwitchStatus: true,
       searchTimeRange: ['', ''],
@@ -203,6 +204,9 @@ export default {
       return dealerMonitorOptionsTmp;
     },
     resizeChart () {
+      if (!this.tabIsActived) {
+        return;
+      }
       let chartRefs = this.$refs.chart;
       if (chartRefs && chartRefs.length > 0) {
         for (let chart of chartRefs) {
@@ -217,12 +221,12 @@ export default {
   },
   mounted () {
     console.log('dealer mounted');
+    window.addEventListener('resize', this.resizeChart);
     // 以下仅为测试用
     this.dealerMonitorOptionsArr.push(JSON.parse(JSON.stringify(this.customChartOption(0))));
   },
   activated () {
-    console.log('dealer activated');
-    window.addEventListener('resize', this.resizeChart);
+    this.tabIsActived = true;
     if (!this.firstRender) {
       this.resizeChart(); 
     }else {
@@ -230,8 +234,8 @@ export default {
     }
   },
   deactivated () {
-    console.log('dealer deactivated');
-    window.removeEventListener('resize', this.resizeChart);
+    this.tabIsActived = false;
+    // window.removeEventListener('resize', this.resizeChart);
   }
 }
 </script>
