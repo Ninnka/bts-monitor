@@ -2,6 +2,9 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -54,10 +57,22 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 1,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+      // {
+      //   test: /\.css$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     use: ['css-loader'],
+      //     publicPath: '../../'
+      //   })
+      //   // loader: ExtractTextPlugin.extract(["css-loader", 'postcss-loader'], {
+      //   //   // 图片、字体资源打包到css上级目录
+      //   //   publicPath: "../../"
+      //   // })
+      // }
     ]
   }
 }

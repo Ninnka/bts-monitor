@@ -51,6 +51,9 @@ import router from './router';
 //引进公共样式
 import "assets/css/common.less";
 
+import "assets/iconfont/iconfont.css";
+import "assets/iconfont/iconfont.js";
+
 //引进element
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
