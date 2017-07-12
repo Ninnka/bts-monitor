@@ -38,6 +38,7 @@ export default {
   },
   data () {
     return {
+      windowResize: false,
       tabIsActived: false,
       firstRender: true,
       msg: 'member',
@@ -103,6 +104,8 @@ export default {
       if (!this.tabIsActived) {
         return;
       }
+      this.windowResize = false;
+      console.log('start resize');
       for (let i = 0; i < this.memberTabList.length; i++) {
         this.$refs.tabContent[i].resetLoaded();
         if (this.currentTab === this.memberTabList[i].name) {
@@ -120,12 +123,16 @@ export default {
     console.log('member created');
   },
   mounted () {
+    // console.log('member mounted');
+    window.addEventListener('resize', () => {
+      this.windowResize = true;
+    });
     window.addEventListener('resize', this.useChartResize);
-    console.log('member mounted');
   },
   activated () {
     this.tabIsActived = true;
-    if (!this.firstRender) {
+    console.log('this.windowResize', this.windowResize);
+    if (this.windowResize) {
       this.useChartResize(); 
     }else {
       this.firstRender = false;
@@ -133,6 +140,9 @@ export default {
   },
   deactivated () {
     this.tabIsActived = false;
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.useChartResize);
   }
 }
 </script>

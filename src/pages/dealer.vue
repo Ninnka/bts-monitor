@@ -72,6 +72,7 @@ export default {
     }
 
     return {
+      windowResize: false,
       tabIsActived: false,
       firstRender: true,
       msg: 'dealer',
@@ -207,6 +208,7 @@ export default {
       if (!this.tabIsActived) {
         return;
       }
+      this.windowResize = false;
       let chartRefs = this.$refs.chart;
       if (chartRefs && chartRefs.length > 0) {
         for (let chart of chartRefs) {
@@ -220,14 +222,17 @@ export default {
     console.log('dealer created');
   },
   mounted () {
-    console.log('dealer mounted');
+    // console.log('dealer mounted');
+    window.addEventListener('resize', () => {
+      this.windowResize = true;
+    });
     window.addEventListener('resize', this.resizeChart);
     // 以下仅为测试用
     this.dealerMonitorOptionsArr.push(JSON.parse(JSON.stringify(this.customChartOption(0))));
   },
   activated () {
     this.tabIsActived = true;
-    if (!this.firstRender) {
+    if (this.windowResize) {
       this.resizeChart(); 
     }else {
       this.firstRender = false;
@@ -236,6 +241,9 @@ export default {
   deactivated () {
     this.tabIsActived = false;
     // window.removeEventListener('resize', this.resizeChart);
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.resizeChart);
   }
 }
 </script>
