@@ -305,9 +305,7 @@ export default {
       this.hasLoaded = false;
     }
   },
-  computed: {
-
-  },
+  computed: {},
   mounted () {}
 }
 </script>

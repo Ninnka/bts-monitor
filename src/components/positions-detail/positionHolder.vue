@@ -9,14 +9,14 @@
         {{text}}<i class="el-icon-caret-bottom el-icon--right"></i>
       </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item v-for="item in navList" :key="item" :command="item.text">{{item.text}}</el-dropdown-item>
+            <el-dropdown-item v-for="item in navList" :key="item.text" :command="item.text">{{item.text}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </header>
     <div class="region-main">
       <ul>
-        <li class="is-flex" :class="item.className" v-for="item in filterShowList(positionHolderList,positionHolderListIndex.start,positionHolderListIndex.end)" :key="item">
+        <li class="is-flex" :class="item.className" v-for="item in filterShowList(positionHolderList,positionHolderListIndex.start,positionHolderListIndex.end)" :key="item.name">
           <div class="serial-num">
             {{ item.index }}
           </div>

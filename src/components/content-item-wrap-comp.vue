@@ -3,7 +3,7 @@
     <div class="il-block item-title-wrap" v-if="showTitle">
       <div class="item-title" :class="[showTitleIndicator ? 'item-title-indicator' : '']">{{ getItemTitle }}
         <span v-if="itemDetail.itemSubTitle != undefined">
-          <span v-for="subTitle of itemDetail.itemSubTitle" :key="subTitle"> {{ getSubTitle(subTitle) }} </span>
+          <span v-for="subTitle of itemDetail.itemSubTitle" :key="subTitle.label"> {{ getSubTitle(subTitle) }} </span>
         </span>
       </div>
     </div>

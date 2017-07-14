@@ -5,7 +5,7 @@
         {{text}}<i class="el-icon-caret-bottom el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item v-for="item in sortList" :key="item" :command="item.text">{{item.text}}</el-dropdown-item>
+        <el-dropdown-item v-for="item in sortList" :key="item.text" :command="item.text">{{item.text}}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
