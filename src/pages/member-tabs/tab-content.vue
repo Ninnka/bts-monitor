@@ -249,6 +249,7 @@ export default {
     positionsDetailEcharts,
     profitTrendEcharts
   },
+  inheritAttrs: false,
   props: {
     memberId: {
       type: [Number, String],

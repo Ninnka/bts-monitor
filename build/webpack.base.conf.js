@@ -29,7 +29,8 @@ module.exports = {
       'assets': path.resolve(__dirname, '../src/assets'),
       '@comps': resolve('src/components'),
       '@pages': path.resolve(__dirname, '../src/pages'),
-      '@mixins': path.resolve(__dirname, '../src/mixins')
+      '@mixins': path.resolve(__dirname, '../src/mixins'),
+      '@http': path.resolve(__dirname, '../src/http')
     }
   },
   module: {

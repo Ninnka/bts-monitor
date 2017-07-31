@@ -31,6 +31,7 @@ import autoRefreshComp from '@comps/auto-refresh-comp';
 import tabContent from '@pages/member-tabs/tab-content';
 
 import { Loading } from 'element-ui';
+import { api } from '@http/api';
 
 export default {
   name: 'member',
@@ -154,7 +155,7 @@ export default {
     });
     window.addEventListener('resize', this.useChartResize);
 
-   // TEST-START:
+   // TEST-START: 测试关闭loading界面
     setTimeout(() => {
       this.removeTabContentLoading();
     }, 2000);
@@ -170,6 +171,17 @@ export default {
     // setTimeout(() => {
     //   loadingInstance.close();
     // }, 10000);
+
+    // TEST-START: 测试axios
+    // this.$axios({
+    //   url: api.test,
+    //   method: 'get'
+    // }).then((res) => {
+    //   console.log('res', res);
+    // }, (error) => {
+    //   console.log('error', error);
+    // });
+    // TEST-END:
   },
   activated () {
     this.tabIsActived = true;

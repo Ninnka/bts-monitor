@@ -2,6 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
+
+// 引入自定义的http模块
+import { axiosInstance  } from '@http/config';
+Vue.prototype.$axios = axiosInstance;
+// setAxios();
+
+import io from 'socket.io-client';
+// const socket = io('http://localhost');
+Vue.prototype.$io = io;
+
 Vue.mixin({
   methods:{
     filterShowList(list,start,end){
@@ -74,6 +84,7 @@ Vue.component('list-sort', listSort)
 
 Vue.config.productionTip = true;
 Vue.use(ElementUI);
+
 /* eslint-disable no-new */
 var app = new Vue({
     router: router,
